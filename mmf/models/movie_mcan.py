@@ -24,7 +24,9 @@ class MoVieMcan(BaseModel):
         super().__init__(config)
         self.config = config
         self._global_config = registry.get("config")
-        self._datasets = self._global_config.datasets.split(",")
+        self._datasets = self._global_config.datasets
+        if isinstance(self._datasets, str):
+            self._datasets = self._datasets.split(",")
 
     @classmethod
     def config_path(cls):
@@ -73,7 +75,7 @@ class MoVieMcan(BaseModel):
         with omegaconf.open_dict(feat_encoder_config):
             feat_encoder_config.params.model_data_dir = self.config.model_data_dir
             feat_encoder_config.params.in_dim = feature_dim
-        feat_model = build_image_encoder(feat_encoder_config, direct_features=True)
+        feat_model = build_image_encoder(feat_encoder_config, direct_features=False)
 
         setattr(self, attr + "_feature_dim", feat_model.out_dim)
         setattr(self, attr + "_feature_encoders", feat_model)
@@ -219,7 +221,13 @@ class MoVieMcan(BaseModel):
             feature = sample_list.image
 
             feature_encoder = getattr(self, attr + "_feature_encoders")
-            encoded_feature = feature_encoder(feature, text_embedding_vec)
+            encoded_feature = feature_encoder(feature)
+            b, c, h, w = encoded_feature.shape
+            padded_feat = torch.zeros(
+                (b, c, 32, 32), dtype=torch.float, device=encoded_feature.device
+            )
+            padded_feat[:, :, :h, :w] = encoded_feature
+            encoded_feature = padded_feat
         else:
             feature = sample_list.image_feature_0
 
