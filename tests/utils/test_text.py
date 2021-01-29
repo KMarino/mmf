@@ -11,6 +11,7 @@ from mmf.utils.configuration import Configuration
 from mmf.utils.env import setup_imports
 from mmf.utils.general import get_mmf_root
 from packaging.version import LegacyVersion
+
 from tests.test_utils import dummy_args
 from tests.utils.test_model import TestDecoderModel
 

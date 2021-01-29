@@ -2,11 +2,12 @@
 
 import unittest
 
-import tests.test_utils as test_utils
 import torch
 from mmf.utils.build import build_model
 from mmf.utils.configuration import Configuration
 from mmf.utils.env import setup_imports
+
+import tests.test_utils as test_utils
 
 
 BERT_VOCAB_SIZE = 30255

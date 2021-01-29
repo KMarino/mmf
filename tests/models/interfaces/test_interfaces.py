@@ -7,11 +7,12 @@ import unittest
 from pathlib import Path
 
 import numpy as np
-import tests.test_utils as test_utils
 import torch
 from mmf.models.mmbt import MMBT
 from mmf.utils.configuration import get_mmf_env, load_yaml
 from mmf.utils.file_io import PathManager
+
+import tests.test_utils as test_utils
 
 
 class TestModelInterfaces(unittest.TestCase):

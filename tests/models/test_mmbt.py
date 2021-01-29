@@ -2,7 +2,6 @@
 
 import unittest
 
-import tests.test_utils as test_utils
 import torch
 from mmf.common.sample import Sample, SampleList
 from mmf.models.mmbt import MMBT
@@ -17,6 +16,8 @@ from mmf.utils.build import build_model
 from mmf.utils.configuration import Configuration
 from mmf.utils.env import setup_imports
 from omegaconf import OmegaConf
+
+import tests.test_utils as test_utils
 
 
 class TestMMBTTorchscript(unittest.TestCase):

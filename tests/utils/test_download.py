@@ -8,6 +8,7 @@ from io import StringIO
 from unittest import mock
 
 import mmf.utils.download as download
+
 import tests.test_utils as test_utils
 
 
