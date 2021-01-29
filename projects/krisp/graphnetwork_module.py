@@ -3,26 +3,21 @@
 # This is the generic module for Graph Network computations, which can be added as a component to any base network
 # Used some word2vec code from https://github.com/adithyamurali/TaskGrasp
 # Also used example code from https://github.com/rusty1s/pytorch_geometric
-import copy
 import os
 import pickle
-from copy import deepcopy
 
 import networkx as nx
 import numpy as np
 import torch
 import torch.nn as nn
 import torch.nn.functional as F
-import yaml
 from gensim.models import KeyedVectors
 from gensim.scripts.glove2word2vec import glove2word2vec
 from mmf.common.registry import registry
 from mmf.models.base_model import BaseModel
 from mmf.utils.text import VocabDict
 from networkx import convert_node_labels_to_integers
-from omegaconf import OmegaConf
 from torch_geometric.nn import BatchNorm, GCNConv, RGCNConv, SAGEConv
-from torch_geometric.utils import k_hop_subgraph
 from tqdm import tqdm
 
 

@@ -6,10 +6,8 @@ import tqdm
 from mmf.common.sample import Sample
 from mmf.common.typings import MMFDatasetConfigType
 from mmf.datasets.builders.okvqa.database import OKVQAAnnotationDatabase
-from mmf.utils.distributed import is_master
 from mmf.datasets.mmf_dataset import MMFDataset
 from mmf.datasets.processors import GraphVQAAnswerProcessor
-
 
 class OKVQADataset(MMFDataset):
     def __init__(
