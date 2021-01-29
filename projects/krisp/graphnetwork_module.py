@@ -6,21 +6,20 @@
 import os
 import pickle
 
-
+import networkx as nx
 import numpy as np
 import torch
 import torch.nn as nn
 import torch.nn.functional as F
+from gensim.models import KeyedVectors
+from gensim.scripts.glove2word2vec import glove2word2vec
 from mmf.common.registry import registry
 from mmf.models.base_model import BaseModel
 from mmf.utils.text import VocabDict
-from tqdm import tqdm
-
-import networkx as nx
-from gensim.models import KeyedVectors
-from gensim.scripts.glove2word2vec import glove2word2vec
 from networkx import convert_node_labels_to_integers
 from torch_geometric.nn import BatchNorm, GCNConv, RGCNConv, SAGEConv
+from tqdm import tqdm
+
 
 def k_hop_subgraph(
     node_idx,
