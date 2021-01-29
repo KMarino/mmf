@@ -6,9 +6,9 @@ import tqdm
 from mmf.common.sample import Sample
 from mmf.common.typings import MMFDatasetConfigType
 from mmf.datasets.builders.okvqa.database import OKVQAAnnotationDatabase
+from mmf.utils.distributed import is_master
 from mmf.datasets.mmf_dataset import MMFDataset
 from mmf.datasets.processors import GraphVQAAnswerProcessor
-from mmf.utils.distributed import is_master
 
 
 class OKVQADataset(MMFDataset):
@@ -21,13 +21,6 @@ class OKVQADataset(MMFDataset):
         **kwargs,
     ):
         super().__init__("okvqa", config, dataset_type, index, *args, **kwargs)
-
-    """def build_annotation_db(self) -> Type[OKVQAAnnotationDatabase]:
-        annotation_path = self._get_path_based_on_index(
-            self.config, "annotations", self._index
-        )
-        return OKVQAAnnotationDatabase(self.config, annotation_path)
-    """
 
     def get_image_path(self, image_id: Union[str, int]) -> str:
         if self.dataset_type == "train":
