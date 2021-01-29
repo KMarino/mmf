@@ -9,6 +9,7 @@ from mmf.datasets.builders.okvqa.database import OKVQAAnnotationDatabase
 from mmf.datasets.mmf_dataset import MMFDataset
 from mmf.datasets.processors import GraphVQAAnswerProcessor
 
+
 class OKVQADataset(MMFDataset):
     def __init__(
         self,
