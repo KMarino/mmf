@@ -16,11 +16,9 @@ import torch.nn.functional as F
 import yaml
 from gensim.models import KeyedVectors
 from gensim.scripts.glove2word2vec import glove2word2vec
-
 # MMF
 # registry is need to register our new model so as to be MMF discoverable
 from mmf.common.registry import registry
-
 # All model using MMF need to inherit BaseModel
 from mmf.models.base_model import BaseModel
 from mmf.utils.text import VocabDict

@@ -3,34 +3,26 @@
 import logging
 import math
 import os
-import pickle
-from copy import deepcopy
 
-import numpy as np
 import torch
 import torch.nn as nn
-import torch.nn.functional as F
-import yaml
 from mmf.common.registry import registry
 from mmf.models import BaseModel
 from mmf.modules.embeddings import BertVisioLinguisticEmbeddings
 from mmf.utils.configuration import get_mmf_cache_dir
 from mmf.utils.file_io import PathManager
 from mmf.utils.modeling import get_optimizer_parameters_for_bert
-from mmf.utils.text import VocabDict
 from mmf.utils.transform import (
     transform_to_batch_sequence,
     transform_to_batch_sequence_dim,
 )
 from omegaconf import OmegaConf
-from torch import nn as nn
-from tqdm import tqdm
-from transformers import BertConfig, BertModel
 from transformers.modeling_bert import (
     BertConfig,
     BertEncoder,
     BertForPreTraining,
     BertLayer,
+    BertModel,
     BertPooler,
     BertPredictionHeadTransform,
     BertPreTrainedModel,
